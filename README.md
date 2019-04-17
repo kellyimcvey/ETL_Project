@@ -1,5 +1,5 @@
-# MINI ETL Project 
-![load image](image.gif)
+# ETL_Project 
+![load image](etl1.png)
 
 Kelly McVey / Wenbin Zhao Billy
 
@@ -12,30 +12,33 @@ Both data sets are in CSV format. We need to make some selections on the source 
 After downloading the CSV files. We use pandas to load them into dataframes.
 
 ### Data Sources
-#### 1. US Monthly Consumer Confidence Index Data from 2013 - 2018 (5 Years)
+#### 1- US Monthly Consumer Confidence Index Data from 2013 - 2018 (5 Years)
 https://data.oecd.org/leadind/consumer-confidence-index-cci.htm
 
-#### 2/ US S&P 500 Companies Stock Market Performance from 2013 - 2018 (5 Years)
+#### 2 - US S&P 500 Companies Stock Market Performance from 2013 - 2018 (5 Years)
 https://www.kaggle.com/camnugent/sandp500/version/4#
 
 
 ## Transform
 #### for S&P 500 data, the following transformation and aggregations were performed:
-1. All stocks are grouped by month
-2. An average (mean) aggregated value was calculated from closing price.
-3. Date format is changed to YYYY-MM format, renamed column to "month"
+1- All stocks are grouped by month
+2- An average (mean) aggregated value was calculated from closing price.
+3- Date format is changed to YYYY-MM format, renamed column to "month"
 
 #### for Consumer Confidence Index data set, the following transform were performed:
-1. only select country US
-2. change time filed name to 'month' in order to match with S&P500 data set
+1- only select country US
+2- change time filed name to 'month' in order to match with S&P500 data set
 
 #### merge both dataframes together by joining on 'month' = 'month'
-1. final dataset (merged data) is completed product / dataset
+1- final dataset (merged data) is completed product / dataset
 
 
 ## Load
 #### Merged Data is transferred to PostgreSQL database by using SQLAlchamy (to_sql function).
+please see ETL-table.sql for database table access
 
 
 ## Final Analysis
-<img src="etl-baby.jpg" alt="baby" width="550"/>
+As two major leading indicators, we found that stock market generally follows the same trend as consumer confidence index with minor variations. In other words, when stock market is doing well, go buy some stuff. That makes you happy!
+
+
